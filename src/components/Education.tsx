@@ -48,21 +48,21 @@ const Education = () => {
             {education.map((edu, index) => (
               <div key={index} className="relative mb-10">
                 <div className="flex flex-col md:flex-row items-start gap-4">
-                  <div className="md:w-1/2 flex md:justify-end">
-                    <div className={`rounded-lg glass-card p-6 md:text-right card-hover animate-in ${index % 2 === 0 ? 'md:animate-fade-in-right' : 'md:animate-fade-in-left'}`}>
+                  <div className="md:w-2/3 flex md:justify-end">
+                    <div className={`rounded-lg glass-card p-6 md:text-right card-hover animate-in w-full ${index % 2 === 0 ? 'md:animate-fade-in-right' : 'md:animate-fade-in-left'}`}>
                       <h3 className="text-lg font-medium">{edu.degree}</h3>
                       <p className="text-primary mt-1">{edu.institution}</p>
                       <p className="text-sm text-foreground/60 mt-2">{edu.location}</p>
                       <p className="text-sm text-foreground/60">{edu.period}</p>
                       
                       <div className="mt-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <BookOpen size={16} className="text-primary" />
+                        <div className="flex items-center gap-2 justify-end mb-2">
                           <h4 className="text-sm font-medium">Relevant Coursework</h4>
+                          <BookOpen size={16} className="text-primary" />
                         </div>
                         <ul className="text-sm space-y-1.5 mt-2">
                           {edu.courses.map((course, idx) => (
-                            <li key={idx} className="flex items-center gap-2 md:justify-end">
+                            <li key={idx} className="flex items-center gap-2 justify-end">
                               <span className="text-foreground/80">{course.name}</span>
                               {course.icon}
                             </li>
@@ -72,11 +72,11 @@ const Education = () => {
                     </div>
                   </div>
                   
-                  <div className="absolute left-0 md:left-1/2 top-6 transform -translate-x-1/2 bg-primary text-white p-2 rounded-full">
+                  <div className="absolute left-0 md:left-1/3 top-6 transform -translate-x-1/2 bg-primary text-white p-2 rounded-full">
                     <GraduationCap size={20} />
                   </div>
                   
-                  <div className="md:w-1/2 md:pl-4"></div>
+                  <div className="md:w-1/3 md:pl-4"></div>
                 </div>
               </div>
             ))}
