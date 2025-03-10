@@ -1,0 +1,323 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 252 83% 68%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 92% 95%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 252 83% 68%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 252 83% 68%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-primary/20 selection:text-primary;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium text-foreground;
+  }
+  
+  section {
+    @apply py-16 md:py-24;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-sm bg-background/40 border border-border/50;
+    position: relative;
+    z-index: 1; 
+  }
+  
+  .glass-panel {
+    @apply bg-background/95 backdrop-blur-lg border border-muted/40 shadow-subtle;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-hover hover:border-primary/40;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-medium mb-6 md:mb-10 relative inline-block;
+  }
+  
+  .section-title::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-1/3 h-1 bg-primary rounded-full;
+  }
+  
+  .button-primary {
+    @apply px-6 py-3 bg-primary text-primary-foreground rounded-lg transition-all duration-300 
+    hover:translate-y-[-2px] hover:shadow-glow hover:shadow-primary/50 active:translate-y-0 active:shadow-md;
+  }
+  
+  .button-secondary {
+    @apply px-6 py-3 bg-accent/20 text-accent rounded-lg transition-all duration-300 
+    hover:translate-y-[-2px] hover:shadow-lg hover:bg-accent/30 active:translate-y-0 active:shadow-md;
+  }
+  
+  .button-outline {
+    @apply px-6 py-3 bg-transparent border border-primary text-primary rounded-lg transition-all duration-300 
+    hover:bg-primary/10 hover:translate-y-[-2px] hover:shadow-lg active:translate-y-0 active:shadow-md;
+  }
+
+  /* Data Science themed components */
+  .data-card {
+    @apply relative overflow-hidden glass-card rounded-xl p-6 border border-primary/20;
+  }
+  
+  .data-card::before {
+    content: '';
+    @apply absolute top-0 right-0 w-12 h-12 bg-primary/10 rounded-bl-2xl;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-primary;
+  }
+  
+  .stat-label {
+    @apply text-sm text-foreground/60;
+  }
+
+  .data-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .data-chip {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm bg-primary/20 text-primary;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-blue-700 bg-clip-text text-transparent;
+  }
+
+  .matrix-bg {
+    background-color: rgba(0, 0, 0, 0.05);
+    background-image: 
+      linear-gradient(rgba(var(--primary-rgb), 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--primary-rgb), 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: -1px -1px;
+  }
+}
+
+.no-scroll-x {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+/* Custom animations */
+.animate-in {
+  opacity: 0.99;
+  transform: translateY(0px);
+  animation: fadeIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-in.appear {
+  animation: fadeIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Image reveal animation */
+.image-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(var(--primary));
+  transform: translateX(-100%);
+  animation: reveal 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.image-reveal img {
+  opacity: 0;
+  animation: imgFadeIn 0.1s 0.6s ease forwards;
+}
+
+@keyframes reveal {
+  0% {
+    transform: translateX(-100%);
+  }
+  40%, 60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes imgFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Data science themed elements */
+.data-grid-bg {
+  background-image: 
+    linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.floating-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-dots::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 25px 25px, hsl(var(--primary)) 2%, transparent 0%);
+  background-size: 50px 50px;
+  opacity: 0.1;
+}
+
+.data-visualization {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.8) 0%, rgba(var(--primary-rgb), 0) 70%);
+  z-index: -1;
+  opacity: 0.2;
+  filter: blur(20px);
+  border-radius: inherit;
+}
+
+/* Neural network animation */
+.neural-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.neural-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, hsl(var(--primary)/0.15) 1%, transparent 1%),
+    radial-gradient(circle at 75% 75%, hsl(var(--primary)/0.15) 1%, transparent 1%);
+  background-size: 60px 60px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Data flow animation */
+.data-flow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, hsl(var(--primary)/0.05) 25%, hsl(var(--primary)/0.05) 26%, transparent 27%, transparent 74%, hsl(var(--primary)/0.05) 75%, hsl(var(--primary)/0.05) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, hsl(var(--primary)/0.05) 25%, hsl(var(--primary)/0.05) 26%, transparent 27%, transparent 74%, hsl(var(--primary)/0.05) 75%, hsl(var(--primary)/0.05) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+  animation: dataFlow 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes dataFlow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
