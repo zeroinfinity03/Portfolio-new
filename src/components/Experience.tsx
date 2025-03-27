@@ -21,8 +21,8 @@ const Experience = () => {
       responsibilities: [
         'Built a sales forecasting model using Python and Scikit-learn, incorporating feature engineering and hyperparameter tuning, which improved prediction accuracy (R2 = 0.82) and supported marketing strategy adjustments.',
         'Collaborated with product and marketing teams to develop an XGBoost-based customer segmentation model (F1-score: 0.85), enabling targeted campaigns that increased user engagement with key features by 15%.',
-        'Conducted exploratory data analysis on a customer churn dataset using Pandas and Matplotlib, identifying three key churn drivers, which led to retention strategies that reduced churn rates.',
-        'Designed and implemented data validation checks and automated model retraining workflows, improving data quality and reducing manual monitoring efforts by 40%.'
+        'Conducted exploratory data analysis on a customer churn dataset using Pandas and Matplotlib, identifying three key churn drivers (one of them being high billing costs), which informed retention strategies that improved customer retention.',
+        'Created data validation checks for incoming datasets using Pandas and automated weekly model retraining workflows for production models.'
       ]
     }
   ];
