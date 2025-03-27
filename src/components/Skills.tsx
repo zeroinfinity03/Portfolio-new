@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import AnimatedText from './AnimatedText';
-import { Database, CloudCog, BrainCircuit, Code, Server, GitBranch, LayoutDashboard, LineChart, MessagesSquare } from 'lucide-react';
+import { Database, CloudCog, BrainCircuit, Code, Server, GitBranch, LayoutDashboard, LineChart, MessagesSquare, BarChart, PieChart, ChartBar } from 'lucide-react';
 
 interface SkillCategoryProps {
   title: string;
@@ -64,36 +64,36 @@ const Skills = () => {
     const iconSize = 14; // Small icon size
     
     const iconMap: Record<string, JSX.Element> = {
-      // Programming & ML
+      // Programming & Data Science
       'Python': <Code size={iconSize} />,
       'SQL': <Database size={iconSize} />,
-      'TensorFlow': <BrainCircuit size={iconSize} />,
+      'Pandas': <Database size={iconSize} />,
+      'NumPy': <BrainCircuit size={iconSize} />,
+      'scikit-learn': <BrainCircuit size={iconSize} />,
+      'SciPy': <BrainCircuit size={iconSize} />,
       'PyTorch': <BrainCircuit size={iconSize} />,
-      'Scikit-learn': <BrainCircuit size={iconSize} />,
-      'LLMs': <BrainCircuit size={iconSize} />,
+      'ETL Pipelines': <Database size={iconSize} />,
+      'A/B Testing': <LineChart size={iconSize} />,
+      'Matplotlib': <LineChart size={iconSize} />,
+      'Seaborn': <BarChart size={iconSize} />,
+      'Plotly': <ChartBar size={iconSize} />,
+      'Power-BI': <PieChart size={iconSize} />,
+      'Tableau': <LayoutDashboard size={iconSize} />,
+      'Predictive Modeling': <LineChart size={iconSize} />,
+      
+      // NLP & LLM Development
       'RAG pipelines': <Database size={iconSize} />,
       'LangChain/LangGraph': <BrainCircuit size={iconSize} />,
+      'Hugging Face': <MessagesSquare size={iconSize} />,
+      'NLTK': <MessagesSquare size={iconSize} />,
       
-      // Software Engineering
+      // Software Engineering & Cloud
+      'FastAPI (API Development)': <Server size={iconSize} />,
+      'AWS': <CloudCog size={iconSize} />,
+      'Git & GitHub': <GitBranch size={iconSize} />,
       'Scalable System Design': <Server size={iconSize} />,
       'Object-Oriented Programming': <Code size={iconSize} />,
-      'API Development (FastAPI)': <Server size={iconSize} />,
       'Code Optimization': <Code size={iconSize} />,
-      'Version Control (Git, GitHub)': <GitBranch size={iconSize} />,
-      'AWS': <CloudCog size={iconSize} />,
-      
-      // Data & AI
-      'Machine Learning': <BrainCircuit size={iconSize} />,
-      'Statistical Analysis': <LineChart size={iconSize} />,
-      'Predictive Modeling': <LineChart size={iconSize} />,
-      'Data Cleaning': <Database size={iconSize} />,
-      'A/B Testing': <LineChart size={iconSize} />,
-      'ETL Pipelines': <Database size={iconSize} />,
-      'Dashboard Development': <LayoutDashboard size={iconSize} />,
-      'PowerBI': <LayoutDashboard size={iconSize} />,
-      'Matplotlib': <LineChart size={iconSize} />,
-      'SciPy': <BrainCircuit size={iconSize} />,
-      'NLP': <MessagesSquare size={iconSize} />,
     };
     
     return {
@@ -104,16 +104,16 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'Programming & ML',
-      skills: ['Python', 'SQL', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'LLMs', 'RAG pipelines', 'LangChain/LangGraph'].map(getSkillWithIcon)
+      title: 'Programming & Data Science',
+      skills: ['Python', 'SQL', 'Pandas', 'NumPy', 'scikit-learn', 'SciPy', 'PyTorch', 'ETL Pipelines', 'A/B Testing', 'Matplotlib', 'Seaborn', 'Plotly', 'Power-BI', 'Tableau', 'Predictive Modeling'].map(getSkillWithIcon)
     },
     {
-      title: 'Software Engineering',
-      skills: ['Scalable System Design', 'Object-Oriented Programming', 'API Development (FastAPI)', 'Code Optimization', 'Version Control (Git, GitHub)', 'AWS'].map(getSkillWithIcon)
+      title: 'NLP & LLM Development',
+      skills: ['RAG pipelines', 'LangChain/LangGraph', 'Hugging Face', 'NLTK'].map(getSkillWithIcon)
     },
     {
-      title: 'Data & AI',
-      skills: ['Machine Learning', 'Statistical Analysis', 'Predictive Modeling', 'Data Cleaning', 'A/B Testing', 'ETL Pipelines', 'Dashboard Development', 'PowerBI', 'Matplotlib', 'SciPy', 'NLP'].map(getSkillWithIcon)
+      title: 'Software Engineering & Cloud',
+      skills: ['FastAPI (API Development)', 'AWS', 'Git & GitHub', 'Scalable System Design', 'Object-Oriented Programming', 'Code Optimization'].map(getSkillWithIcon)
     }
   ];
 
