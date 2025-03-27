@@ -1,10 +1,10 @@
-
 import { useEffect, useRef } from 'react';
 import AnimatedText from './AnimatedText';
+import { Database, CloudCog, BrainCircuit, Code, Server, GitBranch, LayoutDashboard, LineChart, MessagesSquare } from 'lucide-react';
 
 interface SkillCategoryProps {
   title: string;
-  skills: string[];
+  skills: Array<{name: string, icon: JSX.Element}>;
   delay?: number;
 }
 
@@ -47,9 +47,10 @@ const SkillCategory = ({ title, skills, delay = 0 }: SkillCategoryProps) => {
         {skills.map((skill, index) => (
           <span
             key={index}
-            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm flex items-center gap-1.5"
           >
-            {skill}
+            {skill.icon}
+            {skill.name}
           </span>
         ))}
       </div>
@@ -58,22 +59,61 @@ const SkillCategory = ({ title, skills, delay = 0 }: SkillCategoryProps) => {
 };
 
 const Skills = () => {
+  // Icon mapping for skills
+  const getSkillWithIcon = (name: string) => {
+    const iconSize = 14; // Small icon size
+    
+    const iconMap: Record<string, JSX.Element> = {
+      // Programming & ML
+      'Python': <Code size={iconSize} />,
+      'SQL': <Database size={iconSize} />,
+      'TensorFlow': <BrainCircuit size={iconSize} />,
+      'PyTorch': <BrainCircuit size={iconSize} />,
+      'Scikit-learn': <BrainCircuit size={iconSize} />,
+      'LLMs': <BrainCircuit size={iconSize} />,
+      'RAG pipelines': <Database size={iconSize} />,
+      'LangChain/LangGraph': <BrainCircuit size={iconSize} />,
+      
+      // Software Engineering
+      'Scalable System Design': <Server size={iconSize} />,
+      'Object-Oriented Programming': <Code size={iconSize} />,
+      'API Development (FastAPI)': <Server size={iconSize} />,
+      'Code Optimization': <Code size={iconSize} />,
+      'Version Control (Git, GitHub)': <GitBranch size={iconSize} />,
+      'AWS': <CloudCog size={iconSize} />,
+      
+      // Data & AI
+      'Machine Learning': <BrainCircuit size={iconSize} />,
+      'Statistical Analysis': <LineChart size={iconSize} />,
+      'Predictive Modeling': <LineChart size={iconSize} />,
+      'Data Cleaning': <Database size={iconSize} />,
+      'A/B Testing': <LineChart size={iconSize} />,
+      'ETL Pipelines': <Database size={iconSize} />,
+      'Dashboard Development': <LayoutDashboard size={iconSize} />,
+      'PowerBI': <LayoutDashboard size={iconSize} />,
+      'Matplotlib': <LineChart size={iconSize} />,
+      'SciPy': <BrainCircuit size={iconSize} />,
+      'NLP': <MessagesSquare size={iconSize} />,
+    };
+    
+    return {
+      name,
+      icon: iconMap[name] || <div className="w-4 h-4" /> // Fallback empty div if icon not found
+    };
+  };
+
   const skillCategories = [
     {
-      title: 'Programming and Data Processing',
-      skills: ['Python', 'SQL', 'pandas', 'numPy']
+      title: 'Programming & ML',
+      skills: ['Python', 'SQL', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'LLMs', 'RAG pipelines', 'LangChain/LangGraph'].map(getSkillWithIcon)
     },
     {
-      title: 'Data Science and Analytics',
-      skills: ['Hypothesis Testing', 'Data Cleaning', 'Statistical Analysis', 'Machine Learning', 'A/B Testing', 'Predictive Modeling']
+      title: 'Software Engineering',
+      skills: ['Scalable System Design', 'Object-Oriented Programming', 'API Development (FastAPI)', 'Code Optimization', 'Version Control (Git, GitHub)', 'AWS'].map(getSkillWithIcon)
     },
     {
-      title: 'Tools & Cloud',
-      skills: ['AWS (S3, EC2, Lambda)', 'FastAPI', 'Scikit-learn', 'TensorFlow', 'Git and Github', 'Docker', 'PyTorch']
-    },
-    {
-      title: 'Data Visualization',
-      skills: ['Tableau', 'Matplotlib', 'Plotly']
+      title: 'Data & AI',
+      skills: ['Machine Learning', 'Statistical Analysis', 'Predictive Modeling', 'Data Cleaning', 'A/B Testing', 'ETL Pipelines', 'Dashboard Development', 'PowerBI', 'Matplotlib', 'SciPy', 'NLP'].map(getSkillWithIcon)
     }
   ];
 

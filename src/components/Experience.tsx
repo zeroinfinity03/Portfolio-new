@@ -1,29 +1,28 @@
-
 import AnimatedText from './AnimatedText';
 import ExperienceCard from './ExperienceCard';
 
 const Experience = () => {
   const experiences = [
     {
-      company: 'CSUF Fullerton, CA',
+      company: 'California State University, Fullerton',
       position: 'Graduate Student Assistant',
-      location: 'Fullerton, CA',
+      location: 'Fullerton, California, United States',
       period: 'Oct 2024 – Present',
       responsibilities: [
-        'Extracted and cleaned student records (500+ entries) using Python and SQL, enabling precise dashboard reporting.',
-        'Created 10+ Plotly visualizations to track appointments and performance, delivering insights that boosted academic program engagement by 15%.',
-        'Partnered with diverse teams, providing strategic recommendations to shape student initiatives through actionable analytics.'
+        'Designed a real-time student appointments with staff performance analytics dashboard using Streamlit and Plotly.',
+        'Created ETL workflows leveraging regex and pandas to extract, cleanse, and normalize unstructured appointment data across 200+ records.'
       ]
     },
     {
       company: 'iNeuron.ai',
-      position: 'Data Scientist',
+      position: 'Associate Data Scientist',
       location: 'Bengaluru, KA',
       period: 'Aug 2020 – Jul 2022',
       responsibilities: [
-        'Developed predictive models using Python, SQL, and regression analysis, achieving 82% forecasting accuracy (R2) for sales predictions.',
-        'Analyzed expansive customer datasets with Python and SQL, developing a Linear Regression model for sales forecasts (R2: 0.82, RMSE: 4.5) to pinpoint growth opportunities.',
-        'Applied XGBoost to segment users (F1: 0.85), informing feature adoption strategies that increased uptake by 15% and influenced development roadmaps.'
+        'Built a sales forecasting model using Python and Scikit-learn, incorporating feature engineering and hyperparameter tuning, which improved prediction accuracy (R2 = 0.82) and supported marketing strategy adjustments.',
+        'Collaborated with product and marketing teams to develop an XGBoost-based customer segmentation model (F1-score: 0.85), enabling targeted campaigns that increased user engagement with key features by 15%.',
+        'Conducted exploratory data analysis on a customer churn dataset using Pandas and Matplotlib, identifying three key churn drivers, which led to retention strategies that reduced churn rates.',
+        'Designed and implemented data validation checks and automated model retraining workflows, improving data quality and reducing manual monitoring efforts by 40%.'
       ]
     }
   ];
